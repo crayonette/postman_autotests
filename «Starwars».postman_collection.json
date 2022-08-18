@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "d24773b6-05f9-4b32-a2d1-d133fd62a2a9",
+		"name": "«Starwars»",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21332600"
+	},
+	"item": [
+		{
+			"name": "Запрос по персонажу",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ожидаю статус ответа 200\", function() {pm.response.to.have.status(200);})",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {pm.expect(pm.response.responseTime).to.be.below(200);});",
+							"",
+							"pm.test(\"Status code name has string\", function () {pm.response.to.have.status(\"OK\");});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/people/10",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"people",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос за планетой",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ожидаю статус ответа 200\", function() {pm.response.to.have.status(200);})",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {pm.expect(pm.response.responseTime).to.be.below(200);});",
+							"",
+							"pm.test(\"Status code name has string\", function () {pm.response.to.have.status(\"OK\");});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/planets/7",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"planets",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос за кораблем",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has a JSON body\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has a message property\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.be.a('string');",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Response has a data property\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data).to.be.a('object');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/starships/5",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"starships",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://swapi.dev",
+			"type": "string"
+		}
+	]
+}
